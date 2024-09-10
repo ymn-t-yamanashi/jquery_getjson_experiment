@@ -21,9 +21,11 @@ defmodule JqueryGetjsonExperimentWeb.Router do
   end
 
   # Other scopes may use custom stacks.
-  # scope "/api", JqueryGetjsonExperimentWeb do
-  #   pipe_through :api
-  # end
+  scope "/api", JqueryGetjsonExperimentWeb do
+    pipe_through :api
+
+    resources "/users", UserController, except: [:new, :edit]
+  end
 
   # Enable LiveDashboard and Swoosh mailbox preview in development
   if Application.compile_env(:jquery_getjson_experiment, :dev_routes) do
