@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+    </head>
+    <script  src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function(){
+            // DOMがロード時に実行
+            $("#title").text("jquery getJSON テスト");
+
+            // /api/usersからデータを取得
+            $.getJSON("/api/users", function(json){
+                for(rowNo in json.data) {
+                    // 取得後に1件ごとdivの中に追加する
+                    $("#jsontext").append("<p>" + json.data[rowNo].name + "</p>");
+                }
+            });
+        });
+    </script>
+    <h1 id="title">テスト</h1>
+    <div id="jsontext"></div>
+</html>
